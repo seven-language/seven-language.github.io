@@ -34,7 +34,55 @@
         pre code .op { color: #94a3b8; }
         .doc-section { scroll-margin-top: 5rem; }
         .sidebar-link.active { color: #3b8eff; border-left-color: #3b8eff; }
+        [data-theme="light"] { --bg: #f8fafc; --bg-secondary: #e9edf3; --bg-nav: #ffffff; --bg-card: #e2e7ee; --bg-code: #e8ecf2; --border: #b8c4d0; --border-light: #cdd6e0; --text: #0f172a; --text-secondary: #1e293b; }
+        body { transition: background 0.3s, color 0.3s; }
+        [data-theme="light"] body { background: var(--bg) !important; color: var(--text) !important; }
+        [data-theme="light"] nav { background: var(--bg-nav) !important; border-color: var(--border) !important; box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important; backdrop-filter: none !important; }
+        [data-theme="light"] nav a.text-white { color: #0f172a !important; }
+        [data-theme="light"] nav .text-gray-400 { color: #334155 !important; }
+        [data-theme="light"] nav .text-gray-400:hover { color: #1d4ed8 !important; }
+        [data-theme="light"] .code-block { background: var(--bg-code) !important; border: 2px solid var(--border) !important; box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important; }
+        [data-theme="light"] .code-block pre code { color: #1e293b; }
+        [data-theme="light"] pre code .cm { color: #64748b; }
+        [data-theme="light"] pre code .kw { color: #7c3aed; font-weight: 600; }
+        [data-theme="light"] pre code .str { color: #047857; }
+        [data-theme="light"] pre code .num { color: #b45309; }
+        [data-theme="light"] pre code .fn { color: #0369a1; }
+        [data-theme="light"] pre code .io { color: #be123c; }
+        [data-theme="light"] pre code .op { color: #1e293b; }
+        [data-theme="light"] h1, [data-theme="light"] h2, [data-theme="light"] h3, [data-theme="light"] h4 { color: #0f172a !important; }
+        [data-theme="light"] .text-white { color: #0f172a !important; }
+        [data-theme="light"] .text-gray-200 { color: #1e293b !important; }
+        [data-theme="light"] .text-gray-300 { color: #334155 !important; }
+        [data-theme="light"] .text-gray-400 { color: #475569 !important; }
+        [data-theme="light"] .text-gray-500 { color: #64748b !important; }
+        [data-theme="light"] .border-white\/5, [data-theme="light"] .border-white\/10 { border-color: var(--border-light) !important; }
+        [data-theme="light"] .bg-white\/\[0\.02\] { background: var(--bg-secondary) !important; }
+        [data-theme="light"] .bg-\[\#09090b\] { background: var(--bg) !important; }
+        [data-theme="light"] .bg-\[\#09090b\]\/80 { background: var(--bg-nav) !important; }
+        [data-theme="light"] footer { background: var(--bg-secondary) !important; border-color: var(--border) !important; }
+        [data-theme="light"] table { border-color: var(--border) !important; }
+        [data-theme="light"] table th { color: #1e293b !important; background: var(--bg-card) !important; font-weight: 600; }
+        [data-theme="light"] table td { color: #1e293b !important; border-color: var(--border-light) !important; }
+        [data-theme="light"] table .text-seven-400 { color: #1d4ed8 !important; }
+        [data-theme="light"] table .text-emerald-400 { color: #047857 !important; }
+        [data-theme="light"] .sidebar-link { color: #475569 !important; font-weight: 500; }
+        [data-theme="light"] .sidebar-link:hover, [data-theme="light"] .sidebar-link.active { color: #1d4ed8 !important; }
+        [data-theme="light"] .text-seven-400 { color: #1d4ed8 !important; }
+        [data-theme="light"] .text-purple-400, [data-theme="light"] .text-purple-300 { color: #7c3aed !important; }
+        [data-theme="light"] .text-emerald-400 { color: #047857 !important; }
+        [data-theme="light"] .text-amber-400, [data-theme="light"] .text-amber-300 { color: #b45309 !important; }
+        [data-theme="light"] .text-pink-400 { color: #be123c !important; }
+        [data-theme="light"] .text-cyan-400, [data-theme="light"] .text-cyan-300 { color: #0369a1 !important; }
+        [data-theme="light"] aside { background: var(--bg-secondary) !important; border: 2px solid var(--border) !important; }
+        [data-theme="light"] aside p { color: #475569 !important; }
+        [data-theme="light"] .shadow-2xl { box-shadow: 0 4px 24px rgba(0,0,0,0.1) !important; }
+        #theme-toggle { cursor: pointer; background: none; border: none; padding: 0.375rem; border-radius: 0.5rem; color: inherit; transition: background 0.2s; }
+        #theme-toggle:hover { background: rgba(128,128,128,0.15); }
     </style>
+    <script>
+        (function(){try{var t=localStorage.getItem('seven-theme');if(t==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}})();
+    </script>
 </head>
 <body class="bg-[#09090b] text-gray-200 font-sans antialiased">
 
@@ -55,6 +103,10 @@
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                         GitHub
                     </a>
+                    <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                        <svg id="icon-moon" class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                        <svg id="icon-sun" class="w-5 h-5 text-amber-400" style="display:none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                    </button>
                 </div>
                 <button id="sidebarToggle" class="lg:hidden text-gray-400 hover:text-white">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -82,6 +134,7 @@
                     <a href="#functions" class="sidebar-link block py-1.5 pl-3 border-l-2 border-transparent text-gray-400 hover:text-white transition-colors">Functions</a>
                     <a href="#strings" class="sidebar-link block py-1.5 pl-3 border-l-2 border-transparent text-gray-400 hover:text-white transition-colors">Strings</a>
                     <a href="#arrays" class="sidebar-link block py-1.5 pl-3 border-l-2 border-transparent text-gray-400 hover:text-white transition-colors">Arrays</a>
+                    <a href="#imports" class="sidebar-link block py-1.5 pl-3 border-l-2 border-transparent text-gray-400 hover:text-white transition-colors">Imports</a>
                     <a href="#errors" class="sidebar-link block py-1.5 pl-3 border-l-2 border-transparent text-gray-400 hover:text-white transition-colors">Error Handling</a>
 
                     <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3 mt-6">Standard Library</p>
@@ -93,7 +146,13 @@
                     <a href="#builtin-os" class="sidebar-link block py-1.5 pl-3 border-l-2 border-transparent text-gray-400 hover:text-white transition-colors">OS / System</a>
                     <a href="#string-methods" class="sidebar-link block py-1.5 pl-3 border-l-2 border-transparent text-gray-400 hover:text-white transition-colors">String Methods</a>
 
+                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3 mt-6">Backends</p>
+                    <a href="#llvm" class="sidebar-link block py-1.5 pl-3 border-l-2 border-transparent text-gray-400 hover:text-white transition-colors">LLVM Backend</a>
+                    <a href="#optimization" class="sidebar-link block py-1.5 pl-3 border-l-2 border-transparent text-gray-400 hover:text-white transition-colors">Optimization</a>
+                    <a href="#wasm" class="sidebar-link block py-1.5 pl-3 border-l-2 border-transparent text-gray-400 hover:text-white transition-colors">WebAssembly</a>
+
                     <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3 mt-6">Tools</p>
+                    <a href="#spm" class="sidebar-link block py-1.5 pl-3 border-l-2 border-transparent text-gray-400 hover:text-white transition-colors">Package Manager (SPM)</a>
                     <a href="#tools" class="sidebar-link block py-1.5 pl-3 border-l-2 border-transparent text-gray-400 hover:text-white transition-colors">Developer Tools</a>
                     <a href="#runtime" class="sidebar-link block py-1.5 pl-3 border-l-2 border-transparent text-gray-400 hover:text-white transition-colors">Runtime Model</a>
                 </nav>
@@ -106,6 +165,7 @@
                     <!-- Overview -->
                     <section id="overview" class="doc-section mb-16">
                         <h1 class="text-3xl sm:text-4xl font-bold text-white mb-2">SEVEN Language Documentation</h1>
+                        <p class="text-gray-400 mb-6">Version 1.4 &mdash; LLVM Backend Complete</p>
                         <p class="text-gray-300 leading-relaxed mb-4">SEVEN is a compiled, dynamically-typed programming language designed for <strong class="text-white">assembly-level speed with Python-level simplicity</strong>.</p>
                         <ul class="space-y-2 text-gray-400 text-sm">
                             <li>File extensions: <code class="text-seven-400 font-mono">.seven</code> (primary), <code class="text-gray-400 font-mono">.sev</code>, <code class="text-gray-400 font-mono">.sv7</code>, <code class="text-gray-400 font-mono">.s7</code></li>
@@ -332,6 +392,27 @@
                         </div>
                     </section>
 
+                    <!-- Imports -->
+                    <section id="imports" class="doc-section mb-16">
+                        <h2 class="text-2xl font-bold text-white mb-4">Imports</h2>
+                        <p class="text-gray-400 mb-4">Use the <code class="text-seven-400 font-mono">use</code> keyword to import other SEVEN files. All functions and variables from the imported file become available. Duplicate imports are automatically skipped.</p>
+                        <div class="code-block rounded-xl border border-white/5 overflow-hidden">
+                            <pre class="px-5 py-4 text-sm font-mono text-gray-300 overflow-x-auto"><code><span class="cm">!! Import a module</span>
+<span class="kw">use</span> <span class="str">"lib/math_helpers.seven"</span>
+<span class="kw">use</span> <span class="str">"lib/string_utils.seven"</span>
+
+<span class="cm">!! Duplicate imports are safely ignored</span>
+<span class="kw">use</span> <span class="str">"lib/math_helpers.seven"</span>  <span class="cm">!! no-op, already loaded</span>
+
+<span class="cm">!! All exported functions are now available</span>
+<span class="op">result</span> = <span class="fn">my_helper</span>(<span class="num">42</span>)
+<span class="io">show</span> <span class="op">result</span></code></pre>
+                        </div>
+                        <div class="mt-4 p-4 rounded-lg border border-white/5 bg-white/[0.02] text-sm text-gray-400">
+                            <strong class="text-white">Note:</strong> Paths are relative to the project root. The <code class="text-seven-400 font-mono">use</code> keyword is available in interpreter mode (<code class="text-gray-300 font-mono">seven run</code>).
+                        </div>
+                    </section>
+
                     <!-- Error Handling -->
                     <section id="errors" class="doc-section mb-16">
                         <h2 class="text-2xl font-bold text-white mb-4">Error Handling</h2>
@@ -340,15 +421,10 @@
     <span class="op">result</span> = <span class="num">10</span> / <span class="num">0</span>
 <span class="kw">catch</span> <span class="op">e</span>
     <span class="io">err</span> <span class="str">"Error: "</span> + <span class="op">e</span>
-<span class="kw">end</span>
+<span class="kw">done</span>
 
 <span class="cm">!! Throw custom errors</span>
-<span class="kw">func</span> <span class="fn">safe_divide</span>(<span class="op">a</span>, <span class="op">b</span>)
-    <span class="kw">if</span> <span class="op">b</span> == <span class="num">0</span>
-        <span class="kw">error</span> <span class="str">"Cannot divide by zero"</span>
-    <span class="kw">end</span>
-    <span class="kw">return</span> <span class="op">a</span> / <span class="op">b</span>
-<span class="kw">end</span></code></pre>
+<span class="kw">error</span> <span class="str">"Something went wrong"</span></code></pre>
                         </div>
                     </section>
 
@@ -500,6 +576,228 @@
                         </div>
                     </section>
 
+                    <!-- LLVM Backend -->
+                    <section id="llvm" class="doc-section mb-16">
+                        <h2 class="text-2xl font-bold text-white mb-4">LLVM Backend</h2>
+                        <p class="text-gray-300 mb-6">SEVEN v1.4 includes a high-performance LLVM backend that compiles .seven programs to native machine code. 33x faster than the interpreted mode.</p>
+
+                        <div class="code-block rounded-xl overflow-hidden mb-6">
+                            <div class="flex items-center gap-2 px-4 py-2 border-b border-white/5">
+                                <span class="text-xs text-gray-500 font-mono">Usage</span>
+                            </div>
+                            <pre class="px-5 py-4 text-sm font-mono text-gray-300 overflow-x-auto"><code><span class="cmt">!! Compile to native executable</span>
+<span class="kw">seven</span> build app.seven -o myapp
+
+<span class="cmt">!! Compile and run immediately</span>
+<span class="kw">seven</span> run app.seven
+
+<span class="cmt">!! Print LLVM IR</span>
+<span class="kw">seven</span> build app.seven --emit-ir
+
+<span class="cmt">!! Cross-compile</span>
+<span class="kw">seven</span> build app.seven --target x86_64-pc-windows-msvc
+
+<span class="cmt">!! Use NASM backend instead</span>
+<span class="kw">seven</span> run app.seven --asm</code></pre>
+                        </div>
+
+                        <div class="overflow-x-auto mb-6">
+                            <table class="w-full text-sm text-gray-300">
+                                <thead><tr class="text-left border-b border-white/10"><th class="pb-2 pr-4">Feature</th><th class="pb-2">Status</th></tr></thead>
+                                <tbody>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4">Strings, arrays, all 28+ builtins</td><td class="text-emerald-400">Supported</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4">Method syntax (.len, .upper, .push)</td><td class="text-emerald-400">Supported</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4">Cross-compilation (--target)</td><td class="text-emerald-400">Supported</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4">LLVM IR inspection (--emit-ir)</td><td class="text-emerald-400">Supported</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4">NASM fallback (--asm)</td><td class="text-emerald-400">Supported</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4">Windows native build</td><td class="text-emerald-400">Supported</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4">Linux native build</td><td class="text-emerald-400">Supported</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4">Optimization passes (-O0 to -O3)</td><td class="text-emerald-400">Supported</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4">WebAssembly target (--target wasm)</td><td class="text-emerald-400">Supported</td></tr>
+                                    <tr><td class="py-2 pr-4">Auto-generated HTML wrapper for wasm</td><td class="text-emerald-400">Supported</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3 class="text-lg font-semibold text-white mb-3">Windows Build</h3>
+                        <p class="text-gray-300 mb-4">SEVEN v1.4 supports building natively on Windows.</p>
+                        <div class="code-block rounded-xl overflow-hidden mb-6">
+                            <div class="flex items-center gap-2 px-4 py-2 border-b border-white/5">
+                                <span class="text-xs text-gray-500 font-mono">PowerShell</span>
+                            </div>
+                            <pre class="px-5 py-4 text-sm font-mono text-gray-300 overflow-x-auto"><code><span class="cmt">!! One-command setup (installs LLVM + CMake)</span>
+install-windows.bat
+
+<span class="cmt">!! Or manual setup</span>
+winget install LLVM.LLVM
+winget install Kitware.CMake
+build.bat
+
+<span class="cmt">!! Run your programs</span>
+seven run hello.seven
+seven build hello.seven -o hello.exe</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- Optimization -->
+                    <section id="optimization" class="doc-section mb-16">
+                        <h2 class="text-2xl font-bold text-white mb-4">Optimization Passes</h2>
+                        <p class="text-gray-300 mb-4">SEVEN uses LLVM's optimization pipeline. The default is <code class="font-mono text-seven-400">-O2</code>.</p>
+                        <div class="code-block rounded-xl overflow-hidden mb-6">
+                            <div class="flex items-center gap-2 px-4 py-2 border-b border-white/5">
+                                <span class="text-xs text-gray-500 font-mono">Examples</span>
+                            </div>
+                            <pre class="px-5 py-4 text-sm font-mono text-gray-300 overflow-x-auto"><code><span class="cm">!! Default (O2 — recommended)</span>
+seven build app.seven
+
+<span class="cm">!! Maximum speed</span>
+seven build app.seven -O3
+
+<span class="cm">!! No optimization (fastest compile)</span>
+seven build app.seven -O0
+
+<span class="cm">!! Inspect optimized IR</span>
+seven build app.seven -O3 --emit-ir</code></pre>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm text-gray-300">
+                                <thead><tr class="text-left border-b border-white/10"><th class="pb-2 pr-4">Level</th><th class="pb-2 pr-4">Compile Speed</th><th class="pb-2">Output Speed</th></tr></thead>
+                                <tbody>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4 font-mono text-seven-400">-O0</td><td class="py-2 pr-4">Fastest</td><td class="py-2">No optimization</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4 font-mono text-seven-400">-O1</td><td class="py-2 pr-4">Fast</td><td class="py-2">Basic passes</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4 font-mono text-seven-400">-O2</td><td class="py-2 pr-4">Normal</td><td class="py-2">Recommended default</td></tr>
+                                    <tr><td class="py-2 pr-4 font-mono text-seven-400">-O3</td><td class="py-2 pr-4">Slowest</td><td class="py-2">Aggressive — maximum speed</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- WebAssembly -->
+                    <section id="wasm" class="doc-section mb-16">
+                        <h2 class="text-2xl font-bold text-white mb-4">WebAssembly Target</h2>
+                        <p class="text-gray-300 mb-4">Compile SEVEN programs to WebAssembly and run them in any modern browser. The compiler generates both a <code class="font-mono text-seven-400">.wasm</code> binary and an <code class="font-mono text-seven-400">.html</code> wrapper with JavaScript bridge.</p>
+
+                        <h3 class="text-lg font-semibold text-white mt-6 mb-3">Quick Start</h3>
+                        <div class="code-block rounded-xl overflow-hidden mb-6">
+                            <div class="flex items-center gap-2 px-4 py-2 border-b border-white/5">
+                                <span class="text-xs text-gray-500 font-mono">Terminal</span>
+                            </div>
+                            <pre class="px-5 py-4 text-sm font-mono text-gray-300 overflow-x-auto"><code><span class="cm">!! Compile to WebAssembly</span>
+seven build app.seven --target wasm -o build/app
+
+<span class="cm">!! Serve locally</span>
+python3 -m http.server 8000 --directory build
+
+<span class="cm">!! Open http://localhost:8000/app.html in your browser</span></code></pre>
+                        </div>
+
+                        <h3 class="text-lg font-semibold text-white mt-6 mb-3">How It Works</h3>
+                        <div class="space-y-3 text-gray-400 text-sm mb-6">
+                            <div class="p-4 rounded-xl border border-white/5 bg-white/[0.02]"><strong class="text-white">1. Compile</strong> — <code class="font-mono text-xs">seven build app.seven --target wasm</code> generates LLVM IR targeting wasm32</div>
+                            <div class="p-4 rounded-xl border border-white/5 bg-white/[0.02]"><strong class="text-white">2. Link</strong> — wasm-ld links the program with the SEVEN wasm runtime (string/array/math functions)</div>
+                            <div class="p-4 rounded-xl border border-white/5 bg-white/[0.02]"><strong class="text-white">3. Wrap</strong> — An HTML file is auto-generated with a JavaScript bridge that handles <code class="font-mono text-xs">show</code> output</div>
+                            <div class="p-4 rounded-xl border border-white/5 bg-white/[0.02]"><strong class="text-white">4. Run</strong> — Open the HTML in any browser — program output appears on the page</div>
+                        </div>
+
+                        <h3 class="text-lg font-semibold text-white mt-6 mb-3">Requirements</h3>
+                        <div class="overflow-x-auto mb-6">
+                            <table class="w-full text-sm text-gray-300">
+                                <thead><tr class="text-left border-b border-white/10"><th class="pb-2 pr-4">Platform</th><th class="pb-2">Requirement</th></tr></thead>
+                                <tbody>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4">Linux</td><td class="py-2"><code class="font-mono text-xs">sudo apt install lld-21</code> (provides wasm-ld)</td></tr>
+                                    <tr><td class="py-2 pr-4">Windows</td><td class="py-2">Use WSL with Linux requirements</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3 class="text-lg font-semibold text-white mt-6 mb-3">Supported Features in Wasm</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm text-gray-300">
+                                <thead><tr class="text-left border-b border-white/10"><th class="pb-2 pr-4">Feature</th><th class="pb-2">Status</th></tr></thead>
+                                <tbody>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4">Integer arithmetic, variables, loops</td><td class="text-emerald-400">Works</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4">String operations (upper, lower, trim, etc.)</td><td class="text-emerald-400">Works</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4">show (integers and strings)</td><td class="text-emerald-400">Works</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4">Math functions (pow, abs, gcd, etc.)</td><td class="text-emerald-400">Works</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4">Conversion (hex, bin, bool)</td><td class="text-emerald-400">Works</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4">Arrays (push, pop, get, set, range)</td><td class="text-emerald-400">Works</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4">File I/O (read, write, delete)</td><td class="text-gray-500">Not available (no filesystem)</td></tr>
+                                    <tr><td class="py-2 pr-4">ask (user input)</td><td class="text-gray-500">Not available (no stdin)</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- Package Manager -->
+                    <section id="spm" class="doc-section mb-16">
+                        <h2 class="text-2xl font-bold text-white mb-4">Package Manager (SPM)</h2>
+                        <p class="text-gray-300 mb-6">SPM manages dependencies, scripts, and publishing for SEVEN projects.</p>
+
+                        <h3 class="text-lg font-semibold text-white mb-3">Quick Start</h3>
+                        <div class="code-block rounded-xl p-5 mb-6 overflow-x-auto">
+                            <pre class="text-sm font-mono"><code><span class="cmt"># Initialize a new project</span>
+<span class="kw">spm</span> init
+
+<span class="cmt"># Install a package from GitHub</span>
+<span class="kw">spm</span> install user/repo
+
+<span class="cmt"># Install from local path</span>
+<span class="kw">spm</span> install ./path/to/package
+
+<span class="cmt"># List installed packages</span>
+<span class="kw">spm</span> list
+
+<span class="cmt"># Run a named script</span>
+<span class="kw">spm</span> run test</code></pre>
+                        </div>
+
+                        <h3 class="text-lg font-semibold text-white mb-3">Package File (seven.pkg)</h3>
+                        <div class="code-block rounded-xl p-5 mb-6 overflow-x-auto">
+                            <pre class="text-sm font-mono"><code>name = my-project
+version = 1.0.0
+description = My SEVEN project
+author = Your Name
+license = MIT
+
+[dependencies]
+mathext = github:seven-packages/mathext
+
+[scripts]
+test = tools/test
+build = seven build main.seven</code></pre>
+                        </div>
+
+                        <h3 class="text-lg font-semibold text-white mb-3">Commands</h3>
+                        <div class="overflow-x-auto mb-6">
+                            <table class="w-full text-sm">
+                                <thead><tr class="border-b border-white/10">
+                                    <th class="text-left py-2 pr-4 text-gray-400 font-medium">Command</th>
+                                    <th class="text-left py-2 text-gray-400 font-medium">Description</th>
+                                </tr></thead>
+                                <tbody class="text-gray-300">
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4 font-mono text-cyan-300">spm init</td><td>Create seven.pkg manifest</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4 font-mono text-cyan-300">spm install [pkg]</td><td>Install package or all dependencies</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4 font-mono text-cyan-300">spm uninstall &lt;pkg&gt;</td><td>Remove a package</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4 font-mono text-cyan-300">spm list</td><td>List installed packages</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4 font-mono text-cyan-300">spm info [pkg]</td><td>Show package or project info</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4 font-mono text-cyan-300">spm publish</td><td>Package as tarball for distribution</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4 font-mono text-cyan-300">spm search &lt;q&gt;</td><td>Search the registry</td></tr>
+                                    <tr class="border-b border-white/5"><td class="py-2 pr-4 font-mono text-cyan-300">spm update</td><td>Update all installed packages</td></tr>
+                                    <tr><td class="py-2 pr-4 font-mono text-cyan-300">spm run &lt;script&gt;</td><td>Run a named script from seven.pkg</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3 class="text-lg font-semibold text-white mb-3">Using Packages</h3>
+                        <div class="code-block rounded-xl p-5 mb-4 overflow-x-auto">
+                            <pre class="text-sm font-mono"><code><span class="cmt">!! After: spm install ./mathext</span>
+<span class="kw">use</span> <span class="str">"spm_modules/mathext/mathext.seven"</span>
+
+show fibonacci(<span class="num">10</span>)    <span class="cmt">!! 55</span>
+show is_prime(<span class="num">17</span>)     <span class="cmt">!! 1</span></code></pre>
+                        </div>
+                    </section>
+
                     <!-- Developer Tools -->
                     <section id="tools" class="doc-section mb-16">
                         <h2 class="text-2xl font-bold text-white mb-4">Developer Tools</h2>
@@ -550,7 +848,7 @@
             <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div class="flex items-center gap-2.5">
                     <div class="w-6 h-6 rounded-md bg-seven-600 flex items-center justify-center font-mono font-bold text-white text-xs">7</div>
-                    <span class="text-sm text-gray-500">SEVEN Language &copy; 2024 Tejas Chandivakar</span>
+                    <span class="text-sm text-gray-500">SEVEN Language &copy; 2024-2026 Tejas Chandivakar</span>
                 </div>
                 <div class="flex items-center gap-6">
                     <a href="examples.html" class="text-sm text-gray-500 hover:text-gray-300 transition-colors">Examples</a>
@@ -587,6 +885,28 @@
             });
         }, { rootMargin: '-20% 0px -70% 0px' });
         sections.forEach(section => observer.observe(section));
+    </script>
+    <script>
+        function toggleTheme() {
+            var html = document.documentElement;
+            var isLight = html.getAttribute('data-theme') === 'light';
+            if (isLight) {
+                html.removeAttribute('data-theme');
+                try { localStorage.setItem('seven-theme', 'dark'); } catch(e) {}
+            } else {
+                html.setAttribute('data-theme', 'light');
+                try { localStorage.setItem('seven-theme', 'light'); } catch(e) {}
+            }
+            updateThemeIcons();
+        }
+        function updateThemeIcons() {
+            var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+            var moon = document.getElementById('icon-moon');
+            var sun = document.getElementById('icon-sun');
+            if (moon) moon.style.display = isLight ? 'none' : 'block';
+            if (sun) sun.style.display = isLight ? 'block' : 'none';
+        }
+        updateThemeIcons();
     </script>
 </body>
 </html>
