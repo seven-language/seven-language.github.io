@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEVEN — Assembly Speed. Python Simplicity.</title>
-    <meta name="description" content="SEVEN is a compiled programming language that combines assembly-level speed with Python-level simplicity. No VM, no GC, direct x86-64 assembly generation.">
+    <title>SEVEN — Write Simple. Run Native.</title>
+    <meta name="description" content="SEVEN is a compiled programming language with simple, English-like syntax that generates native x86-64 assembly. No VM, no GC, no runtime overhead.">
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,7 +63,65 @@
         pre code .fn { color: #67e8f9; }
         pre code .io { color: #f472b6; }
         pre code .op { color: #94a3b8; }
+        [data-theme="light"] { --bg: #f8fafc; --bg-secondary: #e9edf3; --bg-nav: #ffffff; --bg-card: #e2e7ee; --bg-code: #e8ecf2; --border: #b8c4d0; --border-light: #cdd6e0; --text: #0f172a; --text-secondary: #1e293b; --text-muted: #334155; }
+        body { background: var(--bg, #09090b); color: var(--text, #e5e7eb); transition: background 0.3s, color 0.3s; }
+        [data-theme="light"] body { background: var(--bg); color: var(--text); }
+        [data-theme="light"] nav { background: var(--bg-nav) !important; border-color: var(--border) !important; box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important; backdrop-filter: none !important; }
+        [data-theme="light"] nav a.text-white { color: #0f172a !important; }
+        [data-theme="light"] nav .text-gray-400 { color: #334155 !important; }
+        [data-theme="light"] nav .text-gray-400:hover { color: #1d4ed8 !important; }
+        [data-theme="light"] .hero-glow { background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(29,78,216,0.08), transparent); }
+        [data-theme="light"] .gradient-text { -webkit-text-fill-color: unset !important; background: none !important; color: #1d4ed8 !important; }
+        [data-theme="light"] .border-seven-500\/20 { border-color: rgba(29,78,216,0.3) !important; }
+        [data-theme="light"] .bg-seven-500\/5 { background: rgba(29,78,216,0.08) !important; }
+        [data-theme="light"] .text-seven-400 { color: #1d4ed8 !important; }
+        [data-theme="light"] .border-white\/10 { border-color: var(--border) !important; }
+        [data-theme="light"] .bg-white\/5 { background: var(--bg-card) !important; }
+        [data-theme="light"] .code-block { background: var(--bg-code) !important; border: 2px solid var(--border) !important; box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important; }
+        [data-theme="light"] .code-block .border-white\/5 { border-color: var(--border-light) !important; }
+        [data-theme="light"] .code-block pre code { color: #1e293b; }
+        [data-theme="light"] .code-block pre code .cm { color: #64748b; }
+        [data-theme="light"] .code-block pre code .kw { color: #7c3aed; font-weight: 600; }
+        [data-theme="light"] .code-block pre code .str { color: #047857; }
+        [data-theme="light"] .code-block pre code .num { color: #b45309; }
+        [data-theme="light"] .code-block pre code .fn { color: #0369a1; }
+        [data-theme="light"] .code-block pre code .io { color: #be123c; }
+        [data-theme="light"] .code-block pre code .op { color: #1e293b; }
+        [data-theme="light"] h1, [data-theme="light"] h2, [data-theme="light"] h3, [data-theme="light"] h4 { color: #0f172a !important; }
+        [data-theme="light"] .text-white { color: #0f172a !important; }
+        [data-theme="light"] .text-gray-200 { color: #1e293b !important; }
+        [data-theme="light"] .text-gray-300 { color: #334155 !important; }
+        [data-theme="light"] .text-gray-400 { color: #475569 !important; }
+        [data-theme="light"] .text-gray-500 { color: #64748b !important; }
+        [data-theme="light"] p, [data-theme="light"] li, [data-theme="light"] span { color: inherit; }
+        [data-theme="light"] .border-white\/5 { border-color: var(--border-light) !important; }
+        [data-theme="light"] .bg-white\/\[0\.02\], [data-theme="light"] .bg-white\/\[0\.01\], [data-theme="light"] .bg-white\/\[0\.04\] { background: var(--bg-secondary) !important; }
+        [data-theme="light"] .bg-white\/10 { background: rgba(0,0,0,0.06) !important; }
+        [data-theme="light"] .bg-\[\#09090b\] { background: var(--bg) !important; }
+        [data-theme="light"] .bg-\[\#09090b\]\/80 { background: var(--bg-nav) !important; }
+        [data-theme="light"] a.border-white\/10 { border-color: var(--border) !important; color: #1e293b !important; }
+        [data-theme="light"] a.border-white\/10:hover { border-color: #1d4ed8 !important; color: #1d4ed8 !important; background: rgba(29,78,216,0.05) !important; }
+        [data-theme="light"] #benchmarks .bg-white\/5 { background: #dde3ec !important; }
+        [data-theme="light"] .tab-btn { color: #475569 !important; border-color: var(--border) !important; }
+        [data-theme="light"] .tab-btn:hover { color: #0f172a !important; background: rgba(0,0,0,0.03) !important; }
+        [data-theme="light"] .tab-btn.bg-seven-600\/20 { background: rgba(29,78,216,0.12) !important; color: #1d4ed8 !important; border-color: rgba(29,78,216,0.35) !important; font-weight: 600; }
+        [data-theme="light"] .rounded-2xl.border { border-color: var(--border) !important; background: var(--bg-secondary) !important; box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important; }
+        [data-theme="light"] .text-emerald-400 { color: #047857 !important; }
+        [data-theme="light"] .text-purple-400 { color: #7c3aed !important; }
+        [data-theme="light"] .text-amber-400 { color: #b45309 !important; }
+        [data-theme="light"] .text-pink-400, [data-theme="light"] .text-pink-300 { color: #be123c !important; }
+        [data-theme="light"] .text-cyan-400, [data-theme="light"] .text-cyan-300 { color: #0369a1 !important; }
+        [data-theme="light"] footer { background: var(--bg-secondary) !important; border-color: var(--border) !important; }
+        [data-theme="light"] .font-mono.text-xs.bg-white\/\[0\.04\] { background: var(--bg-card) !important; border: 1px solid var(--border-light) !important; }
+        [data-theme="light"] #mobileMenu { background: #fff !important; box-shadow: 0 4px 16px rgba(0,0,0,0.12) !important; }
+        [data-theme="light"] .shadow-2xl { box-shadow: 0 4px 24px rgba(0,0,0,0.1) !important; }
+        [data-theme="light"] .shadow-lg { box-shadow: 0 2px 12px rgba(0,0,0,0.08) !important; }
+        #theme-toggle { cursor: pointer; background: none; border: none; padding: 0.375rem; border-radius: 0.5rem; color: inherit; transition: background 0.2s; }
+        #theme-toggle:hover { background: rgba(128,128,128,0.15); }
     </style>
+    <script>
+        (function(){try{var t=localStorage.getItem('seven-theme');if(t==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}})();
+    </script>
 </head>
 <body class="bg-[#09090b] text-gray-200 font-sans antialiased">
 
@@ -84,6 +142,10 @@
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                         GitHub
                     </a>
+                    <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                        <svg id="icon-moon" class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                        <svg id="icon-sun" class="w-5 h-5 text-amber-400" style="display:none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                    </button>
                 </div>
                 <button id="mobileMenuBtn" class="md:hidden text-gray-400 hover:text-white">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -98,6 +160,9 @@
                 <a href="install.html" class="block text-sm text-gray-400 hover:text-white py-2">Install</a>
                 <a href="playground.html" class="block text-sm text-gray-400 hover:text-white py-2">Playground</a>
                 <a href="https://github.com/tejas-chandivakar/seven-lang" target="_blank" class="block text-sm text-gray-400 hover:text-white py-2">GitHub</a>
+                <button onclick="toggleTheme()" class="flex items-center gap-2 text-sm text-gray-400 hover:text-white py-2 w-full text-left">
+                    <span id="mobile-theme-label">Light Mode</span>
+                </button>
             </div>
         </div>
     </nav>
@@ -106,13 +171,31 @@
     <section class="relative pt-32 pb-20 sm:pt-40 sm:pb-28 hero-glow">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-4xl mx-auto text-center">
+                <div class="flex flex-wrap items-center justify-center gap-2 mb-8 fade-in">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-seven-500/20 bg-seven-500/5 text-seven-400 text-sm">
+                        <span class="w-2 h-2 rounded-full bg-seven-400 animate-pulse"></span>
+                        v1.4 — LLVM Backend
+                    </div>
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-gray-400 text-xs font-mono">
+                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/></svg>
+                        Linux
+                    </div>
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-gray-400 text-xs font-mono">
+                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+                        Windows
+                    </div>
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-gray-400 text-xs font-mono">
+                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                        Browser (Wasm)
+                    </div>
+                </div>
                 <h1 class="text-5xl sm:text-7xl font-extrabold tracking-tight mb-6 fade-in" style="animation-delay:0.1s">
-                    <span class="text-white">Assembly Speed.</span><br>
-                    <span class="gradient-text">Python Simplicity.</span>
+                    <span class="text-white">Write Simple.</span><br>
+                    <span class="gradient-text">Run Native.</span>
                 </h1>
                 <p class="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed fade-in" style="animation-delay:0.2s">
-                    SEVEN is a compiled programming language that generates native x86-64 assembly.
-                    No VM. No garbage collector. No runtime overhead. Just fast, readable code.
+                    SEVEN is a compiled programming language with English-like syntax that compiles to native machine code via LLVM.
+                    Runs on <strong class="text-white">Linux</strong>, <strong class="text-white">Windows</strong>, and the <strong class="text-white">Browser</strong>. No VM. No GC. No overhead.
                 </p>
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 fade-in" style="animation-delay:0.3s">
                     <a href="install.html" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-seven-600 hover:bg-seven-500 text-white font-medium transition-all shadow-lg shadow-seven-600/20 hover:shadow-seven-500/30 text-center">
@@ -164,7 +247,7 @@
                     <div class="w-12 h-12 rounded-xl bg-seven-600/10 flex items-center justify-center mb-4">
                         <svg class="w-6 h-6 text-seven-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                     </div>
-                    <h3 class="text-lg font-semibold text-white mb-2">31x Faster than Python</h3>
+                    <h3 class="text-lg font-semibold text-white mb-2">32x Faster than Python</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">Compiles directly to native x86-64 machine code. No interpreter, no virtual machine, no garbage collector overhead.</p>
                 </div>
                 <!-- Feature 2 -->
@@ -173,7 +256,7 @@
                         <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
                     </div>
                     <h3 class="text-lg font-semibold text-white mb-2">Human-Readable Syntax</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">English-like keywords: <code class="text-purple-300 font-mono text-xs">show</code>, <code class="text-purple-300 font-mono text-xs">ask</code>, <code class="text-purple-300 font-mono text-xs">repeat</code>, <code class="text-purple-300 font-mono text-xs">each...as</code>. Code reads like plain English.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">English-like keywords: <code class="text-purple-300 font-mono text-xs">show</code>, <code class="text-purple-300 font-mono text-xs">ask</code>, <code class="text-purple-300 font-mono text-xs">repeat</code>, <code class="text-purple-300 font-mono text-xs">use</code>, <code class="text-purple-300 font-mono text-xs">each...as</code>. Code reads like plain English.</p>
                 </div>
                 <!-- Feature 3 -->
                 <div class="p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] card-glow transition-all">
@@ -181,7 +264,7 @@
                         <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
                     </div>
                     <h3 class="text-lg font-semibold text-white mb-2">Self-Hosted Compiler</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">SEVEN compiles itself. The compiler is written in SEVEN, bootstrapped from hand-written x86-64 NASM Assembly.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">SEVEN compiles itself. Full 5-stage pipeline (lexer &rarr; parser &rarr; analyzer &rarr; IR &rarr; codegen) written in SEVEN with <code class="text-pink-300 font-mono text-xs">use</code> imports.</p>
                 </div>
                 <!-- Feature 4 -->
                 <div class="p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] card-glow transition-all">
@@ -196,16 +279,16 @@
                     <div class="w-12 h-12 rounded-xl bg-amber-600/10 flex items-center justify-center mb-4">
                         <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/></svg>
                     </div>
-                    <h3 class="text-lg font-semibold text-white mb-2">Developer Tools</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">REPL, code formatter, linter, profiler, test runner, and VS Code extension with syntax highlighting.</p>
+                    <h3 class="text-lg font-semibold text-white mb-2">Package Manager</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed"><code class="text-amber-300 font-mono text-xs">spm install</code> — full package manager with init, install, publish, lock files. Plus REPL, formatter, linter, and VS Code extension.</p>
                 </div>
                 <!-- Feature 6 -->
                 <div class="p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] card-glow transition-all">
                     <div class="w-12 h-12 rounded-xl bg-cyan-600/10 flex items-center justify-center mb-4">
                         <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                     </div>
-                    <h3 class="text-lg font-semibold text-white mb-2">Built-in Testing</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed"><code class="text-cyan-300 font-mono text-xs">assert(cond, msg)</code> builtin + test runner that auto-discovers and runs test files with colored output.</p>
+                    <h3 class="text-lg font-semibold text-white mb-2">WebAssembly + LLVM</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Compile to native via LLVM with <code class="text-cyan-300 font-mono text-xs">-O2</code>/<code class="text-cyan-300 font-mono text-xs">-O3</code> optimization, or target <code class="text-cyan-300 font-mono text-xs">--target wasm32</code> to run in any browser. Cross-platform: <strong class="text-cyan-300">Linux</strong>, <strong class="text-cyan-300">Windows</strong>, <strong class="text-cyan-300">Browser</strong>.</p>
                 </div>
             </div>
         </div>
@@ -218,63 +301,73 @@
                 <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Speed Comparison</h2>
                 <p class="text-gray-400 text-lg">100 million loop iterations benchmark</p>
             </div>
-            <div class="max-w-3xl mx-auto space-y-5" id="benchmarks">
+            <div class="max-w-3xl mx-auto space-y-4" id="benchmarks">
                 <!-- NASM -->
                 <div class="flex items-center gap-4">
-                    <span class="w-20 text-right text-sm font-mono text-gray-400 shrink-0">NASM</span>
-                    <div class="flex-1 h-9 rounded-lg bg-white/5 overflow-hidden">
-                        <div class="h-full rounded-lg bg-emerald-500/80 bar-animate flex items-center justify-end pr-3" style="width:4%">
-                            <span class="text-xs font-mono text-white font-medium">0.025s</span>
-                        </div>
+                    <span class="w-24 text-right text-sm font-mono text-gray-400 shrink-0">NASM</span>
+                    <div class="flex-1 h-8 rounded-lg bg-white/5 overflow-hidden">
+                        <div class="h-full rounded-lg bg-emerald-500/80 bar-animate" style="width:1%"></div>
                     </div>
+                    <span class="w-16 text-left text-xs font-mono text-gray-300 font-medium shrink-0">0.01s</span>
                 </div>
-                <!-- C -->
+                <!-- Rust -->
                 <div class="flex items-center gap-4">
-                    <span class="w-20 text-right text-sm font-mono text-gray-400 shrink-0">C</span>
-                    <div class="flex-1 h-9 rounded-lg bg-white/5 overflow-hidden">
-                        <div class="h-full rounded-lg bg-emerald-500/60 bar-animate flex items-center justify-end pr-3" style="width:5%;animation-delay:0.1s">
-                            <span class="text-xs font-mono text-white font-medium">0.03s</span>
-                        </div>
+                    <span class="w-24 text-right text-sm font-mono text-gray-400 shrink-0">Rust</span>
+                    <div class="flex-1 h-8 rounded-lg bg-white/5 overflow-hidden">
+                        <div class="h-full rounded-lg bg-emerald-500/60 bar-animate" style="width:1%;animation-delay:0.05s"></div>
                     </div>
+                    <span class="w-16 text-left text-xs font-mono text-gray-300 font-medium shrink-0">0.01s</span>
                 </div>
-                <!-- SEVEN -->
+                <!-- SEVEN -O2 -->
                 <div class="flex items-center gap-4">
-                    <span class="w-20 text-right text-sm font-mono font-bold text-seven-400 shrink-0">SEVEN</span>
-                    <div class="flex-1 h-9 rounded-lg bg-white/5 overflow-hidden">
-                        <div class="h-full rounded-lg bg-gradient-to-r from-seven-600 to-seven-400 bar-animate flex items-center justify-end pr-3" style="width:32%;animation-delay:0.2s">
-                            <span class="text-xs font-mono text-white font-bold">0.20s</span>
-                        </div>
+                    <span class="w-24 text-right text-sm font-mono font-bold text-seven-400 shrink-0">SEVEN <span class="text-xs text-seven-500">-O2</span></span>
+                    <div class="flex-1 h-8 rounded-lg bg-white/5 overflow-hidden">
+                        <div class="h-full rounded-lg bg-gradient-to-r from-seven-600 to-seven-400 bar-animate" style="width:1%;animation-delay:0.08s"></div>
                     </div>
+                    <span class="w-16 text-left text-xs font-mono text-seven-400 font-bold shrink-0">0.003s</span>
                 </div>
                 <!-- Node.js -->
                 <div class="flex items-center gap-4">
-                    <span class="w-20 text-right text-sm font-mono text-gray-400 shrink-0">Node.js</span>
-                    <div class="flex-1 h-9 rounded-lg bg-white/5 overflow-hidden">
-                        <div class="h-full rounded-lg bg-yellow-500/50 bar-animate flex items-center justify-end pr-3" style="width:40%;animation-delay:0.3s">
-                            <span class="text-xs font-mono text-white font-medium">0.35s</span>
-                        </div>
+                    <span class="w-24 text-right text-sm font-mono text-gray-400 shrink-0">Node.js</span>
+                    <div class="flex-1 h-8 rounded-lg bg-white/5 overflow-hidden">
+                        <div class="h-full rounded-lg bg-yellow-500/50 bar-animate" style="width:2%;animation-delay:0.1s"></div>
                     </div>
+                    <span class="w-16 text-left text-xs font-mono text-gray-300 font-medium shrink-0">0.10s</span>
                 </div>
-                <!-- Java -->
+                <!-- SEVEN no-opt -->
                 <div class="flex items-center gap-4">
-                    <span class="w-20 text-right text-sm font-mono text-gray-400 shrink-0">Java</span>
-                    <div class="flex-1 h-9 rounded-lg bg-white/5 overflow-hidden">
-                        <div class="h-full rounded-lg bg-orange-500/50 bar-animate flex items-center justify-end pr-3" style="width:45%;animation-delay:0.4s">
-                            <span class="text-xs font-mono text-white font-medium">0.42s</span>
-                        </div>
+                    <span class="w-24 text-right text-sm font-mono text-gray-500 shrink-0">SEVEN <span class="text-xs">-O0</span></span>
+                    <div class="flex-1 h-8 rounded-lg bg-white/5 overflow-hidden">
+                        <div class="h-full rounded-lg bg-seven-600/30 bar-animate" style="width:2%;animation-delay:0.13s"></div>
                     </div>
+                    <span class="w-16 text-left text-xs font-mono text-gray-500 font-medium shrink-0">0.06s</span>
+                </div>
+                <!-- C# -->
+                <div class="flex items-center gap-4">
+                    <span class="w-24 text-right text-sm font-mono text-gray-400 shrink-0">C#</span>
+                    <div class="flex-1 h-8 rounded-lg bg-white/5 overflow-hidden">
+                        <div class="h-full rounded-lg bg-purple-500/50 bar-animate" style="width:12%;animation-delay:0.2s"></div>
+                    </div>
+                    <span class="w-16 text-left text-xs font-mono text-gray-300 font-medium shrink-0">0.49s</span>
+                </div>
+                <!-- Perl -->
+                <div class="flex items-center gap-4">
+                    <span class="w-24 text-right text-sm font-mono text-gray-400 shrink-0">Perl</span>
+                    <div class="flex-1 h-8 rounded-lg bg-white/5 overflow-hidden">
+                        <div class="h-full rounded-lg bg-orange-500/50 bar-animate" style="width:42%;animation-delay:0.25s"></div>
+                    </div>
+                    <span class="w-16 text-left text-xs font-mono text-gray-300 font-medium shrink-0">1.75s</span>
                 </div>
                 <!-- Python -->
                 <div class="flex items-center gap-4">
-                    <span class="w-20 text-right text-sm font-mono text-gray-400 shrink-0">Python</span>
-                    <div class="flex-1 h-9 rounded-lg bg-white/5 overflow-hidden">
-                        <div class="h-full rounded-lg bg-red-500/50 bar-animate flex items-center justify-end pr-3" style="width:100%;animation-delay:0.5s">
-                            <span class="text-xs font-mono text-white font-medium">6.2s</span>
-                        </div>
+                    <span class="w-24 text-right text-sm font-mono text-gray-400 shrink-0">Python</span>
+                    <div class="flex-1 h-8 rounded-lg bg-white/5 overflow-hidden">
+                        <div class="h-full rounded-lg bg-red-500/50 bar-animate" style="width:100%;animation-delay:0.3s"></div>
                     </div>
+                    <span class="w-16 text-left text-xs font-mono text-gray-300 font-medium shrink-0">4.20s</span>
                 </div>
             </div>
-            <p class="text-center text-gray-500 text-sm mt-8">100M loop iterations on Linux x86-64. Lower is faster.</p>
+            <p class="text-center text-gray-500 text-sm mt-8">100M loop iterations on Linux x86-64. Lower is faster. SEVEN -O2 uses LLVM optimization (default).</p>
         </div>
     </section>
 
@@ -292,6 +385,7 @@
                     <button class="tab-btn px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white border border-white/5 hover:border-white/10 transition" data-tab="fileio">File I/O</button>
                     <button class="tab-btn px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white border border-white/5 hover:border-white/10 transition" data-tab="loops">Loops</button>
                     <button class="tab-btn px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white border border-white/5 hover:border-white/10 transition" data-tab="errorhandling">Error Handling</button>
+                    <button class="tab-btn px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white border border-white/5 hover:border-white/10 transition" data-tab="imports">Imports</button>
                     <button class="tab-btn px-4 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white border border-white/5 hover:border-white/10 transition" data-tab="testing">Testing</button>
                 </div>
                 <div class="code-block rounded-2xl border border-white/5 overflow-hidden">
@@ -390,7 +484,7 @@
     <span class="io">show</span> <span class="op">result</span>
 <span class="kw">catch</span> <span class="op">e</span>
     <span class="io">err</span> <span class="str">"Caught: "</span> + <span class="op">e</span>
-<span class="kw">end</span>
+<span class="kw">done</span>
 
 <span class="cm">!! Throw custom errors</span>
 <span class="kw">func</span> <span class="fn">divide</span>(<span class="op">a</span>, <span class="op">b</span>)
@@ -401,6 +495,24 @@
 <span class="kw">end</span>
 
 <span class="io">show</span> <span class="fn">divide</span>(<span class="num">10</span>, <span class="num">3</span>)</code></pre>
+                    </div>
+                    <div id="tab-imports" class="tab-content">
+                        <div class="flex items-center gap-2 px-4 py-3 border-b border-white/5">
+                            <div class="flex gap-1.5"><div class="w-3 h-3 rounded-full bg-red-500/70"></div><div class="w-3 h-3 rounded-full bg-yellow-500/70"></div><div class="w-3 h-3 rounded-full bg-green-500/70"></div></div>
+                            <span class="text-xs text-gray-500 font-mono ml-2">compile.seven</span>
+                        </div>
+                        <pre class="px-5 py-4 text-sm font-mono leading-relaxed overflow-x-auto"><code><span class="cm">!! Import modules with use</span>
+<span class="kw">use</span> <span class="str">"src/self/lexer.seven"</span>
+<span class="kw">use</span> <span class="str">"src/self/parser.seven"</span>
+<span class="kw">use</span> <span class="str">"src/self/codegen.seven"</span>
+
+<span class="cm">!! All functions are now available</span>
+<span class="op">source</span> = <span class="str">"show 42"</span> + <span class="fn">chr</span>(<span class="num">10</span>)
+<span class="fn">lex_run</span>(<span class="op">source</span>)
+<span class="op">stmts</span> = <span class="fn">parse_all</span>()
+<span class="fn">codegen_generate</span>(<span class="op">stmts</span>)
+
+<span class="io">show</span> <span class="str">"Compilation complete!"</span></code></pre>
                     </div>
                     <div id="tab-testing" class="tab-content">
                         <div class="flex items-center gap-2 px-4 py-3 border-b border-white/5">
@@ -575,6 +687,30 @@
             });
             observer.observe(benchSection);
         }
+    </script>
+    <script>
+        function toggleTheme() {
+            var html = document.documentElement;
+            var isLight = html.getAttribute('data-theme') === 'light';
+            if (isLight) {
+                html.removeAttribute('data-theme');
+                try { localStorage.setItem('seven-theme', 'dark'); } catch(e) {}
+            } else {
+                html.setAttribute('data-theme', 'light');
+                try { localStorage.setItem('seven-theme', 'light'); } catch(e) {}
+            }
+            updateThemeIcons();
+        }
+        function updateThemeIcons() {
+            var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+            var moon = document.getElementById('icon-moon');
+            var sun = document.getElementById('icon-sun');
+            var label = document.getElementById('mobile-theme-label');
+            if (moon) moon.style.display = isLight ? 'none' : 'block';
+            if (sun) sun.style.display = isLight ? 'block' : 'none';
+            if (label) label.textContent = isLight ? 'Dark Mode' : 'Light Mode';
+        }
+        updateThemeIcons();
     </script>
 </body>
 </html>
